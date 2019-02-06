@@ -1,0 +1,45 @@
+name: SwiftyApp
+options:
+  bundleIdPrefix: com.swiftyid
+configs:
+  Staging Debug: debug
+  Staging Release: release
+  Production Debug: debug
+  Production Release: release
+targets:
+  SwiftyApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "10.0"
+    sources:
+      - Codes
+      - Resources
+    scheme:
+      testTargets:
+        - SwiftyTests
+      configVariants:
+        - Staging
+        - Production
+    dependencies:
+      - carthage: Alamofire
+    settings:
+      base:
+        INFOPLIST_FILE: Info.plist
+      configs:
+        Staging Debug:
+          OTHER_SWIFT_FLAGS: "$(inherited) -DSTAGING"
+        Staging Release:
+          OTHER_SWIFT_FLAGS: "$(inherited) -DSTAGING"
+        Production Debug:
+          OTHER_SWIFT_FLAGS: "$(inherited) -DPRODUCTION"
+        Production Release:
+          OTHER_SWIFT_FLAGS: "$(inherited) -DPRODUCTION"
+  SwiftyTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: 
+      - Tests
+    dependencies:
+      - target: SwiftyApp
+
+
