@@ -1,5 +1,7 @@
 ## Improve Your Team's Productivity With XcodeGen
 
+https://github.com/SwiftyID/Meetup/issues/12
+
 This is the accompanying sample code containing simple `project.yml` to generate Xcode project on-demand.
 
 Steps:
